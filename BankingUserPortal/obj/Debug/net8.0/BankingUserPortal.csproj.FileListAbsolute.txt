@@ -1,0 +1,7 @@
+/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.GeneratedMSBuildEditorConfig.editorconfig
+/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.AssemblyInfoInputs.cache
+/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.AssemblyInfo.cs
+/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.csproj.CoreCompileInputs.cache
+/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.MvcApplicationPartsAssemblyInfo.cache
+/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.RazorAssemblyInfo.cache
+/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.RazorAssemblyInfo.cs
