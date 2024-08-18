@@ -62,7 +62,7 @@ namespace BankingUserPortal.Controllers
         }
 
         [HttpPost("deposit/{id}")]
-        public IActionResult Deposit(int id, [FromBody] decimal amount)
+        public IActionResult Deposit(int id, [FromBody] TransactionRequest request)
         {
             try
             {
@@ -71,9 +71,9 @@ namespace BankingUserPortal.Controllers
                 if (account == null)
                     return NotFound(JSResponse<string>.Failure($"Account with ID {id} not found."));
 
-                account.Deposit(amount);
+                account.Deposit(request.Amount);
                 return Ok(JSResponse<string>.Success(
-                    $"Deposited {amount:C} to account {id}. New balance: {account.CheckBalance(true)}"));
+                    $"Deposited {request.Amount:C} to account {id}. New balance: {account.CheckBalance(true)}"));
             }
             catch (Exception ex)
             {
@@ -82,7 +82,7 @@ namespace BankingUserPortal.Controllers
         }
 
         [HttpPost("withdraw/{id}")]
-        public IActionResult Withdraw(int id, [FromBody] decimal amount)
+        public IActionResult Withdraw(int id, [FromBody] TransactionRequest request)
         {
             try
             {
@@ -90,9 +90,9 @@ namespace BankingUserPortal.Controllers
                 if (account == null)
                     return NotFound(JSResponse<string>.Failure($"Account with ID {id} not found."));
 
-                account.Withdraw(amount);
+                account.Withdraw(request.Amount);
                 return Ok(JSResponse<string>.Success(
-                    $"Withdrawn {amount:C} from account {id}. New balance: {account.CheckBalance(true)}"));
+                    $"Withdrawn {request.Amount:C} from account {id}. New balance: {account.CheckBalance(true)}"));
             }
             catch (InvalidOperationException ex)
             {
@@ -120,5 +120,10 @@ namespace BankingUserPortal.Controllers
                 return BadRequest(JSResponse<string>.Failure("Error checking balance", ex.Message));
             }
         }
+    }
+
+    public class TransactionRequest
+    {
+        public decimal Amount { get; set; }
     }
 }

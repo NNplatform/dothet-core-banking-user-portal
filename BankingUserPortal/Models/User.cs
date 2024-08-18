@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using BankingUserPortal.Models;
 
-namespace BankingUserPortal.Models
+namespace dotnet_core_banking_user_portal.Models
 {
     public class User
     {

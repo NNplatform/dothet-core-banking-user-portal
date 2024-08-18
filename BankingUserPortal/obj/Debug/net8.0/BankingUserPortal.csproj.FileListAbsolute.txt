@@ -1,10 +1,3 @@
-/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.GeneratedMSBuildEditorConfig.editorconfig
-/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.AssemblyInfoInputs.cache
-/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.AssemblyInfo.cs
-/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.csproj.CoreCompileInputs.cache
-/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.MvcApplicationPartsAssemblyInfo.cache
-/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.RazorAssemblyInfo.cache
-/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.RazorAssemblyInfo.cs
 /Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/bin/Debug/net8.0/appsettings.Development.json
 /Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/bin/Debug/net8.0/appsettings.json
 /Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/bin/Debug/net8.0/BankingUserPortal.staticwebassets.runtime.json
@@ -13,6 +6,13 @@
 /Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/bin/Debug/net8.0/BankingUserPortal.runtimeconfig.json
 /Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/bin/Debug/net8.0/BankingUserPortal.dll
 /Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/bin/Debug/net8.0/BankingUserPortal.pdb
+/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.GeneratedMSBuildEditorConfig.editorconfig
+/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.AssemblyInfoInputs.cache
+/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.AssemblyInfo.cs
+/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.csproj.CoreCompileInputs.cache
+/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.MvcApplicationPartsAssemblyInfo.cache
+/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.RazorAssemblyInfo.cache
+/Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/BankingUserPortal.RazorAssemblyInfo.cs
 /Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/staticwebassets.build.json
 /Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/staticwebassets.development.json
 /Users/suchawadee/Documents/programming/dothet-core-banking-user-portal/BankingUserPortal/obj/Debug/net8.0/staticwebassets/msbuild.BankingUserPortal.Microsoft.AspNetCore.StaticWebAssets.props
