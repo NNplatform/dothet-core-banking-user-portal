@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using BankingUserPortal.Models;
+using BankingUserPortal.Models; 
+using BankingUserPortal.Models.RequestForms;
 using System;
 
 namespace BankingUserPortal.Controllers
@@ -128,20 +129,5 @@ namespace BankingUserPortal.Controllers
                 return BadRequest(JSResponse<string>.Failure("Error making investment", ex.Message));
             }
         }
-    }
-
-    public class TransactionRequest
-    {
-        public decimal Amount { get; set; }
-    }
-
-    public class TransactionConversionRequest : TransactionRequest
-    {
-        public decimal ConversionRate { get; set; }
-    }
-
-    public class InvestmentRequest : TransactionRequest
-    {
-        public string InvestmentType { get; set; }
     }
 }
