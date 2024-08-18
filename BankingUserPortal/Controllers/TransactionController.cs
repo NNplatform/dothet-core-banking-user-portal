@@ -15,14 +15,15 @@ namespace BankingUserPortal.Controllers
             {
                 var account = Account.GetAccount(id);
                 if (account == null)
-                    return NotFound($"Account with ID {id} not found.");
+                    return NotFound(JSResponse<string>.Failure($"Account with ID {id} not found."));
 
                 account.Deposit(request.Amount);
-                return Ok($"Deposited {request.Amount:C} to account {id}. New balance: {account.CheckBalance(true)}");
+                return Ok(JSResponse<string>.Success(
+                    $"Deposited {request.Amount:C} to account {id}. New balance: {account.CheckBalance(true)}"));
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error making deposit: {ex.Message}");
+                return BadRequest(JSResponse<string>.Failure("Error making deposit", ex.Message));
             }
         }
 
@@ -33,14 +34,15 @@ namespace BankingUserPortal.Controllers
             {
                 var account = Account.GetAccount(id);
                 if (account == null)
-                    return NotFound($"Account with ID {id} not found.");
+                    return NotFound(JSResponse<string>.Failure($"Account with ID {id} not found."));
 
                 account.Deposit(request.Amount, request.ConversionRate);
-                return Ok($"Deposited {request.Amount:C} with conversion rate {request.ConversionRate} to account {id}. New balance: {account.CheckBalance(true)}");
+                return Ok(JSResponse<string>.Success(
+                    $"Deposited {request.Amount:C} with conversion rate {request.ConversionRate} to account {id}. New balance: {account.CheckBalance(true)}"));
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error making deposit with conversion: {ex.Message}");
+                return BadRequest(JSResponse<string>.Failure("Error making deposit with conversion", ex.Message));
             }
         }
 
@@ -51,18 +53,19 @@ namespace BankingUserPortal.Controllers
             {
                 var account = Account.GetAccount(id);
                 if (account == null)
-                    return NotFound($"Account with ID {id} not found.");
+                    return NotFound(JSResponse<string>.Failure($"Account with ID {id} not found."));
 
                 account.Withdraw(request.Amount);
-                return Ok($"Withdrawn {request.Amount:C} from account {id}. New balance: {account.CheckBalance(true)}");
+                return Ok(JSResponse<string>.Success(
+                    $"Withdrawn {request.Amount:C} from account {id}. New balance: {account.CheckBalance(true)}"));
             }
             catch (InvalidOperationException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(JSResponse<string>.Failure(ex.Message));
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error making withdrawal: {ex.Message}");
+                return BadRequest(JSResponse<string>.Failure("Error making withdrawal", ex.Message));
             }
         }
 
@@ -73,25 +76,26 @@ namespace BankingUserPortal.Controllers
             {
                 var account = Account.GetAccount(id);
                 if (account == null)
-                    return NotFound($"Account with ID {id} not found.");
+                    return NotFound(JSResponse<string>.Failure($"Account with ID {id} not found."));
 
                 if (account is InvestmentAccount investmentAccount)
                 {
                     investmentAccount.Invest(request.Amount);
-                    return Ok($"Invested {request.Amount:C} in account {id}. New balance: {account.CheckBalance(true)}");
+                    return Ok(JSResponse<string>.Success(
+                        $"Invested {request.Amount:C} in account {id}. New balance: {account.CheckBalance(true)}"));
                 }
                 else
                 {
-                    return BadRequest("This account does not support investments.");
+                    return BadRequest(JSResponse<string>.Failure("This account does not support investments."));
                 }
             }
             catch (InvalidOperationException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(JSResponse<string>.Failure(ex.Message));
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error making investment: {ex.Message}");
+                return BadRequest(JSResponse<string>.Failure("Error making investment", ex.Message));
             }
         }
 
@@ -102,25 +106,26 @@ namespace BankingUserPortal.Controllers
             {
                 var account = Account.GetAccount(id);
                 if (account == null)
-                    return NotFound($"Account with ID {id} not found.");
+                    return NotFound(JSResponse<string>.Failure($"Account with ID {id} not found."));
 
                 if (account is InvestmentAccount investmentAccount)
                 {
                     investmentAccount.Invest(request.Amount, request.InvestmentType);
-                    return Ok($"Invested {request.Amount:C} in account {id} with type {request.InvestmentType}. New balance: {account.CheckBalance(true)}");
+                    return Ok(JSResponse<string>.Success(
+                        $"Invested {request.Amount:C} in account {id} with type {request.InvestmentType}. New balance: {account.CheckBalance(true)}"));
                 }
                 else
                 {
-                    return BadRequest("This account does not support investments.");
+                    return BadRequest(JSResponse<string>.Failure("This account does not support investments."));
                 }
             }
             catch (InvalidOperationException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(JSResponse<string>.Failure(ex.Message));
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error making investment: {ex.Message}");
+                return BadRequest(JSResponse<string>.Failure("Error making investment", ex.Message));
             }
         }
     }

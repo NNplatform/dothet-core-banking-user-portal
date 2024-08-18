@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using BankingUserPortal.Models;
 using System;
+using Microsoft.Extensions.Logging;
 
 namespace BankingUserPortal.Controllers
 {
@@ -8,17 +9,38 @@ namespace BankingUserPortal.Controllers
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
     {
+        private readonly ILogger<AccountController> _logger;
+
+        public AccountController(ILogger<AccountController> logger)
+        {
+            _logger = logger;
+        }
+
+        [HttpGet("test")]
+        public IActionResult Test()
+        {
+            return Ok(JSResponse<string>.Success("API is working"));
+        }
+
         [HttpPost("create")]
         public IActionResult CreateAccount([FromBody] Account account)
         {
+            _logger.LogInformation("Received request to create account: {@Account}", account);
             try
             {
-                var createdAccount = Account.CreateAccount(account);
-                return Ok(createdAccount);
+                if (account.AccountType == null || account.Balance == 0)
+                {
+                    return BadRequest(JSResponse<string>.Failure("AccountType and initial Balance are required."));
+                }
+
+                var createdAccount = Account.CreateAccount(new Account(account.AccountType, account.Balance));
+                _logger.LogInformation("Created new account with ID: {AccountId}", createdAccount.AccountId);
+                return Ok(JSResponse<Account>.Success(createdAccount));
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error creating account: {ex.Message}");
+                _logger.LogError(ex, "Error creating account");
+                return BadRequest(JSResponse<string>.Failure("Error creating account", ex.Message));
             }
         }
 
@@ -29,13 +51,13 @@ namespace BankingUserPortal.Controllers
             {
                 var account = Account.GetAccount(id);
                 if (account == null)
-                    return NotFound($"Account with ID {id} not found.");
+                    return NotFound(JSResponse<string>.Failure($"Account with ID {id} not found."));
 
-                return Ok(account);
+                return Ok(JSResponse<Account>.Success(account));
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error retrieving account: {ex.Message}");
+                return BadRequest(JSResponse<string>.Failure("Error retrieving account", ex.Message));
             }
         }
 
@@ -45,15 +67,17 @@ namespace BankingUserPortal.Controllers
             try
             {
                 var account = Account.GetAccount(id);
+                _logger.LogDebug("Account ID {AccountId} is of type {AccountType}", id, account?.GetType().Name);
                 if (account == null)
-                    return NotFound($"Account with ID {id} not found.");
+                    return NotFound(JSResponse<string>.Failure($"Account with ID {id} not found."));
 
                 account.Deposit(amount);
-                return Ok($"Deposited {amount:C} to account {id}. New balance: {account.CheckBalance(true)}");
+                return Ok(JSResponse<string>.Success(
+                    $"Deposited {amount:C} to account {id}. New balance: {account.CheckBalance(true)}"));
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error making deposit: {ex.Message}");
+                return BadRequest(JSResponse<string>.Failure("Error making deposit", ex.Message));
             }
         }
 
@@ -64,18 +88,19 @@ namespace BankingUserPortal.Controllers
             {
                 var account = Account.GetAccount(id);
                 if (account == null)
-                    return NotFound($"Account with ID {id} not found.");
+                    return NotFound(JSResponse<string>.Failure($"Account with ID {id} not found."));
 
                 account.Withdraw(amount);
-                return Ok($"Withdrawn {amount:C} from account {id}. New balance: {account.CheckBalance(true)}");
+                return Ok(JSResponse<string>.Success(
+                    $"Withdrawn {amount:C} from account {id}. New balance: {account.CheckBalance(true)}"));
             }
             catch (InvalidOperationException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(JSResponse<string>.Failure(ex.Message));
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error making withdrawal: {ex.Message}");
+                return BadRequest(JSResponse<string>.Failure("Error making withdrawal", ex.Message));
             }
         }
 
@@ -86,13 +111,13 @@ namespace BankingUserPortal.Controllers
             {
                 var account = Account.GetAccount(id);
                 if (account == null)
-                    return NotFound($"Account with ID {id} not found.");
+                    return NotFound(JSResponse<string>.Failure($"Account with ID {id} not found."));
 
-                return Ok($"Account {id} balance: {account.CheckBalance(true)}");
+                return Ok(JSResponse<string>.Success($"Account {id} balance: {account.CheckBalance(true)}"));
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error checking balance: {ex.Message}");
+                return BadRequest(JSResponse<string>.Failure("Error checking balance", ex.Message));
             }
         }
     }
