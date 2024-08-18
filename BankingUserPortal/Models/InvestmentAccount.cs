@@ -10,11 +10,11 @@ namespace BankingUserPortal.Models
 
         private readonly ILogger<InvestmentAccount> _logger;
 
-        public InvestmentAccount(ILogger<InvestmentAccount> logger)
+        public InvestmentAccount(ILogger<InvestmentAccount> logger) : base(logger)
         {
             _logger = logger;
+            InvestedAmount = 0;
         }
-
         public override void Deposit(decimal amount)
         {
             Balance += amount;

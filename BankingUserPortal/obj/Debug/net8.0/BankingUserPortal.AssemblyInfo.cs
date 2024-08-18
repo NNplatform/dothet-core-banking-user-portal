@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BankingUserPortal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+adaf85b6db46293858ecd27bf383cfe6d8453add")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b828c96a9eaa1aa654bf5fced121d6c14296dd0b")]
 [assembly: System.Reflection.AssemblyProductAttribute("BankingUserPortal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BankingUserPortal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
