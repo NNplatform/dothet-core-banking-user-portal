@@ -2,9 +2,9 @@ namespace BankingUserPortal.Models.Abstracts
 {
     public abstract class BaseAccount
 {
-    public int AccountId { get; set; }
+    public virtual int AccountId { get; set; }
+    public virtual decimal Balance { get; set; }
     public int UserId { get; set; }
-    public decimal Balance { get; set; }
 
     // Abstract methods for deposit and withdraw
     public abstract void Deposit(decimal amount);
